@@ -2,7 +2,7 @@ it('slow resources, no stub', () => {
     cy.server()
     cy.route('/slow_external').as('slowExternal') // This takes ~30 seconds to complete
     cy.visit('/slow')
-    cy.wait('@slowExternal', {timeout: 60000}).its('status').should('equal', 503)
+    cy.wait('@slowExternal', {timeout: 60000}).its('status').should('match', /50\d/)
 })
 
 it('slow resources, with stub', () => {

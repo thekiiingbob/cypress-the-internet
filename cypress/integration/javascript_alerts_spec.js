@@ -23,13 +23,12 @@ it('spy on alert, stub log', () => {
 
     cy.contains('Click for JS Alert').click()
     cy.get('@alertSpy').should('have.been.calledWith', 'I am a JS Alert')
+    cy.get('@logStub').should('have.been.calledOnce')
     cy.get('#result').should('have.text', "I'm the captain now...")
 })
 
 it('stub function on window', () => {
     cy.visit('/javascript_alerts')
-
-    
 
     cy.window().then(win => {
         cy.spy(win, 'alert').as('alertSpy')
@@ -38,11 +37,13 @@ it('stub function on window', () => {
         cy.stub(win, 'jsAlert', () => {
             win.alert('Cypress rocks!')
             win.log('Did you see the alert?')
-        }).as('logStub')
+        }).as('jsAlertStub')
     })
 
     cy.contains('Click for JS Alert').click()
     cy.get('@alertSpy').should('have.been.calledWith', 'Cypress rocks!')
+    cy.get('@logSpy').should('have.been.calledWith', 'Did you see the alert?')
+    cy.get('@jsAlertStub').should('have.been.calledOnce')
     cy.get('#result').should('have.text', 'Did you see the alert?')
 })
 

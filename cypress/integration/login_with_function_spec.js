@@ -5,17 +5,12 @@ function login(name, password) {
     cy.get('button').click()
 }
 
-it('can login', () => {
+it('can login with inline function', () => {
     const name = 'tomsmith'
     const password = 'SuperSecretPassword!'
     
     // Login
     login(name, password)
-
-    // Perform login
-    cy.get('#username').type(name)
-    cy.get('#password').type(password)
-    cy.get('button').click() // WTF Dave?!? No ID?
 
     const expectedText = 'Welcome to the Secure Area. When you are done click logout below.'
 
