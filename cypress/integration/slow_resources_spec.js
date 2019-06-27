@@ -6,13 +6,6 @@ it('slow resources, no stub', () => {
 })
 
 it('slow resources, with stub', () => {
-    cy.server()
-    cy.route('/slow_external', {status: '200'}).as('slowExternal')
-    cy.visit('/slow')
-    cy.wait('@slowExternal').its('status').should('equal', 200)
-})
-
-it('stub with body', () => {
     const timestamp = Date.now()
 
     cy.server()

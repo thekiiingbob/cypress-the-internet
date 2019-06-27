@@ -4,7 +4,7 @@ describe('key presses', () => {
         cy.visit('/key_presses')
     })
 
-    describe('letters', () => {
+    describe('type', () => {
         const alphabet = [
             'a', 'b', 'c', 'd', 'e', 
             'f', 'g', 'h', 'i', 'j',
@@ -22,9 +22,4 @@ describe('key presses', () => {
         })
     })
 
-    describe('special characters', () => {
-        it.only('test', () => {
-            cy.get('#target').type(`{shift}1`)
-        })
-    })
 })

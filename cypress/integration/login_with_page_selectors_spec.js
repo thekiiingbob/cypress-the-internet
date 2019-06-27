@@ -16,7 +16,7 @@ function login(name, password) {
     cy.get(LoginPage.loginButton).click()
 }
 
-it('can login with page object', () => {
+it('can login with page selectors', () => {
     const name = 'tomsmith'
     const password = 'SuperSecretPassword!'
     
